@@ -1,4 +1,7 @@
 #!/bin/bash
+if ! [ -d "win11" ]; then
+    mkdir "win11"
+fi
 
 sudo mount -o loop windows.iso win11
 
