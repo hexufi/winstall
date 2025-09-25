@@ -14,6 +14,8 @@ Download Windows 11 ISO file manually from https://www.microsoft.com/en-us/softw
 Autounattend.xml is the configuration file that makes Windows 11 install fully automatic.
 You can generate your own custom configuration easily at https://schneegans.de/windows/unattend-generator/ or use the default one provided by this repository in `addons` directory.
 
+**IMPORTANT:** Note that the default autounattend.xml provided by this repo chooses the target disk for installation automatically. If you have multiple disks and want to choose a spesific disk, you should use a custom autounattend.xml. 
+
 To use your own `autounattend.xml`, replace the one provided by this repository with yours in the `addons` directory.
 
 ## 4. Build and run
@@ -24,6 +26,19 @@ First run `./build.sh` to create `winstall.iso`. You can use the created **winst
 Now you are ready to us your new automated Windows 11 install media.
 
 Make sure that the USB is booted in UEFI mode on the target device. The rest will be handled by the automatic windows installation if all steps were done correctly and the target device is supported and correctly configured from the BIOS.
+
+### Quick reference examples for basic use
+Usage: build.sh [--config <path> | --iso <path> | --output <path> | --help]
+
+With custom iso path and custom autounattend.xml path:
+```bash
+./build.sh -i <original-windows-iso-file-path> -c <path-to-custom-xml-config>
+```
+
+With custom iso path and custom output path:
+```bash
+./build.sh -i <original-windows-iso-file-path> -o <path-to-output-iso>
+```
 
 # Pro tips
 The default autounattend.xml has a source url to the config on line 3 of the xml config. Using it saves a lot of time for creating customizations based on the defaults chosen by this repository.
